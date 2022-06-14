@@ -32,15 +32,39 @@ const Home = () => {
 
     const [emailLog, setEmailLog] = useState("")
     const [passwordLog, setPasswordLog] = useState("")
+
     const log = () => {
         Backendless.UserService.login(emailLog, passwordLog, true).then((response: any) => {
             console.log(response)
-            // setName(response.name)
-            // setAge(response.age)
-            // setCountry(response.country)
-            // setGender(response.gender)
+        }).catch((e) => {
+            alert(e)
         })
     }
+
+    // const log = () => {
+    //     let online = 0
+    //     Backendless.Data.of("Statistic").findById({objectId: "EBC44CCC-B3FF-4F67-881B-D2F6CF913089"})
+    //         .then((response) => {
+    //             // @ts-ignore
+    //             console.log(response.online)
+    //             // @ts-ignore
+    //             online = response.online
+    //             const r = Backendless.UserService.login(emailLog, passwordLog, true).then((response2) => {
+    //                 // @ts-ignore
+    //                 console.log(online)
+    //                 // @ts-ignore
+    //                 console.log(response.online)
+    //                 Backendless.Data.of("Statistic").save({
+    //                     objectId: "EBC44CCC-B3FF-4F67-881B-D2F6CF913089",
+    //                     // @ts-ignore
+    //                     online: online + 1
+    //                 })
+    //             })
+    //         })
+    // }
+
+
+
 
     const help = () => {
         Backendless.UserService.restorePassword("tank12358@gmail.com").then((response) => {
@@ -61,7 +85,11 @@ const Home = () => {
     const [nameFolder, setNameFolder] = useState("")
 
     const createFolder = () => {
-        Backendless.Files.upload("reg.txt", `users/${name}/${nameFolder}`)
+        Backendless.Files.upload("reg.txt", `users/${name}/${nameFolder}`).then((response) => {
+
+        }).catch((e) => {
+            alert(e)
+        })
     }
 
     const [nameFolderDelete, setNameFolderDelete] = useState("")

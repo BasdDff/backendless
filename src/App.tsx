@@ -5,23 +5,18 @@ import Backendless from 'backendless'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import Friends from "./pages/Friends";
 
 function App() {
-
-    useEffect(() => {
-        Backendless.UserService.getCurrentUser().then(response => {
-            console.log(response)
-        })
-    }, [])
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/profile" element={<Profile/>}/>
+                <Route path="/friends" element={<Friends/>}/>
             </Routes>
         </BrowserRouter>
-
     );
 }
 

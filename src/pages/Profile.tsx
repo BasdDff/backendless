@@ -68,7 +68,11 @@ const Profile = () => {
     const [desc, setDesc] = useState("")
 
     const saveGeoPoint = () => {
-        Backendless.Data.of("Place").save({location: `POINT (${x} ${y})`, description: desc})
+        Backendless.Data.of("Place").save({location: `POINT (${x} ${y})`, description: desc}).then((response) => {
+
+        }).catch((e) => {
+            alert(e)
+        })
     }
 
     return (
